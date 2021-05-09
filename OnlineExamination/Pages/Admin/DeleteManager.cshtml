@@ -1,0 +1,12 @@
+﻿@page
+@model OnlineExamination.Pages.Admin.DeleteManagerModel
+@{
+}
+<div class="alert alert-danger">
+    Are you Sure to delete ?
+</div>
+
+<form method="post">
+    <button type="submit" class="btn btn-danger">Yes</button>
+    <a asp-page="./Managers" class="btn btn-primary">Cancel</a>
+</form>

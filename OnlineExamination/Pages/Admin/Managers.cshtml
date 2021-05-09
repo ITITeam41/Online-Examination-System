@@ -1,0 +1,35 @@
+﻿@page
+@model OnlineExamination.Pages.Admin.ManagersModel
+@{
+}
+<table class="table" style="border-block-color:blueviolet" border="1">
+    <tr>
+        <td class="font-italic" style="border:solid">Name</td>
+        <td class="font-italic" style="border:solid">Email</td>
+        <td class="font-italic" style="border:solid">Phone</td>
+    </tr>
+    @foreach (var doc in Model.managerDTOList.Managers)
+    {
+        <tr>
+            <td class="font-italic">@doc.Name</td>
+            <td class="font-italic">@doc.Email</td>
+            <td class="font-italic">@doc.PhoneNumber</td>
+            <td>
+                <a asp-page="/Admin/DeleteManager" asp-route-managerId="@doc.Id">
+                    Delete
+                </a>
+            </td>
+            @*<td>
+                <a asp-page="/UniversityPages/Delete" asp-route-UniversityId="@uni.Id">
+                    Delete
+                </a>
+            </td>
+            <td>
+                <a asp-page="/UniversityPages/EditUniversity" asp-route-UniversityId="@uni.Id">
+                    Edit
+                </a>
+            </td>*@
+        </tr>
+    }
+
+</table>
