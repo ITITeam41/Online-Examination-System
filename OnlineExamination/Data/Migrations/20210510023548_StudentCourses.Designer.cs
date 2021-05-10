@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineExamination.Data;
 
 namespace OnlineExamination.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210510023548_StudentCourses")]
+    partial class StudentCourses
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -162,9 +164,6 @@ namespace OnlineExamination.Data.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("DOB")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
@@ -172,17 +171,11 @@ namespace OnlineExamination.Data.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Gender")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasColumnType("nvarchar(256)")
@@ -234,6 +227,9 @@ namespace OnlineExamination.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("DoctorId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -241,6 +237,8 @@ namespace OnlineExamination.Data.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("CourseId");
+
+                    b.HasIndex("DoctorId");
 
                     b.ToTable("Courses");
                 });
@@ -260,6 +258,57 @@ namespace OnlineExamination.Data.Migrations
                     b.ToTable("CourseExams");
                 });
 
+            modelBuilder.Entity("OnlineExamination.Entities.Doctor", b =>
+                {
+                    b.Property<int>("DoctorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DOB")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Gender")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Phone")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("DoctorId");
+
+                    b.ToTable("Doctor");
+                });
+
+            modelBuilder.Entity("OnlineExamination.Entities.DoctorExam", b =>
+                {
+                    b.Property<int>("DoctorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ExamId")
+                        .HasColumnType("int");
+
+                    b.HasKey("DoctorId", "ExamId");
+
+                    b.HasIndex("ExamId");
+
+                    b.ToTable("DoctorExam");
+                });
+
             modelBuilder.Entity("OnlineExamination.Entities.Exam", b =>
                 {
                     b.Property<int>("ExamId")
@@ -272,9 +321,6 @@ namespace OnlineExamination.Data.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Result")
-                        .HasColumnType("float");
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
@@ -452,6 +498,13 @@ namespace OnlineExamination.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("OnlineExamination.Entities.Course", b =>
+                {
+                    b.HasOne("OnlineExamination.Entities.Doctor", null)
+                        .WithMany("Courses")
+                        .HasForeignKey("DoctorId");
+                });
+
             modelBuilder.Entity("OnlineExamination.Entities.CourseExam", b =>
                 {
                     b.HasOne("OnlineExamination.Entities.Course", "Course")
@@ -462,6 +515,21 @@ namespace OnlineExamination.Data.Migrations
 
                     b.HasOne("OnlineExamination.Entities.Exam", "Exam")
                         .WithMany("CourseExams")
+                        .HasForeignKey("ExamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("OnlineExamination.Entities.DoctorExam", b =>
+                {
+                    b.HasOne("OnlineExamination.Entities.Doctor", "Doctor")
+                        .WithMany("DoctorExams")
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("OnlineExamination.Entities.Exam", "Exam")
+                        .WithMany("DoctorExams")
                         .HasForeignKey("ExamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

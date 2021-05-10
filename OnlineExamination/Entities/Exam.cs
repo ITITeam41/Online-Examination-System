@@ -7,5 +7,17 @@ namespace OnlineExamination.Entities
 {
     public class Exam
     {
+        public int ExamId { get; set; }
+        public string Name { get; set; }
+        public int passMark { get; set; }
+        public double Result { get; set; }
+        public int totalMark { get; set; }
+        public double Duration { get; set; }
+        public bool Status { get; set; }
+        public IList<CourseExam> CourseExams { get; set; }
+        public IList<ExamQuestion> ExamQuestions { get; set; }
+        public IList<StudentExam> StudentExams { get; set; }
+
+
     }
 }
