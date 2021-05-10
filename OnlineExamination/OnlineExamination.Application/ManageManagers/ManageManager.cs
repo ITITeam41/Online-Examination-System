@@ -22,14 +22,14 @@ namespace OnlineExamination.Application.ManageManagers
             throw new NotImplementedException();
         }
 
-        void IManageManager.DeleteManager(string ManagerID)
-        {
-            //var mngr = userManager.Users
-            //.SingleOrDefault(u => u.Id == ManagerID);
-            //userManager.RemoveFromRoleAsync(mngr, "Manager");
-            //userManager.DeleteAsync(mngr);
-            
-        }
+        //void IManageManager.DeleteManager(string ManagerID)
+        //{
+        //    var mngr = userManager.Users
+        //    .SingleOrDefault(u => u.Id == ManagerID);
+        //    userManager.RemoveFromRoleAsync(mngr, "Manager");
+        //    userManager.DeleteAsync(mngr);
+
+        //}
 
         void IManageManager.EditManager(ManagerDTO Manager)
         {

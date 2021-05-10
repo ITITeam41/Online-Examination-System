@@ -10,6 +10,6 @@ namespace OnlineExamination.Application.ManageManagers
         public ManagerDTO GetManager(string ManagerID);
         public void EditManager(ManagerDTO Manager);
         public void AddManager(ManagerDTO Manager);
-        public void DeleteManager(string ManagerId);
+        //public void DeleteManager(string ManagerId);
     }
 }

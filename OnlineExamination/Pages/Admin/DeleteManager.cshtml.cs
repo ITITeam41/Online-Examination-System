@@ -28,12 +28,26 @@ namespace OnlineExamination.Pages.Admin
         {
             mngr = manageManager.GetManager(managerId);
         }
-        public IActionResult OnPost(string managerId)
+        //public async Task<IActionResult> DeleteManager(string managerId)
+        //{
+
+        //}
+        public async Task<IActionResult> OnPostAsync(string managerId)
         {
-            var mg = userManager.Users.SingleOrDefault(m => m.Id == managerId);
-            userManager.RemoveFromRoleAsync(mg, "Manager");
-            userManager.DeleteAsync(mg);
-            //manageManager.DeleteManager(managerId);
+            var mg = await userManager.FindByIdAsync(managerId);
+            if (mg == null)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                var Result = await userManager.DeleteAsync(mg);
+                if (Result.Succeeded)
+                {
+                    return RedirectToPage("./Managers");
+                }
+            }
+
             return RedirectToPage("./Managers");
         }
     }

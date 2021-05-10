@@ -6,6 +6,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="OnlineExamination.Application\ManageUsers\**" />
+    <Compile Remove="Pages\Manager\**" />
+    <Compile Remove="Pages\User\**" />
+    <Content Remove="OnlineExamination.Application\ManageUsers\**" />
+    <Content Remove="Pages\Manager\**" />
+    <Content Remove="Pages\User\**" />
+    <EmbeddedResource Remove="OnlineExamination.Application\ManageUsers\**" />
+    <EmbeddedResource Remove="Pages\Manager\**" />
+    <EmbeddedResource Remove="Pages\User\**" />
+    <None Remove="OnlineExamination.Application\ManageUsers\**" />
+    <None Remove="Pages\Manager\**" />
+    <None Remove="Pages\User\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.14" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.13" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.13" />
@@ -15,12 +30,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="OnlineExamination.Application\ManageUsers\" />
-    <Folder Include="Pages\Manager\" />
-    <Folder Include="Pages\User\" />
   </ItemGroup>
 
 </Project>
