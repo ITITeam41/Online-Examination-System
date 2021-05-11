@@ -17,7 +17,7 @@ using OnlineExamination;
 
 namespace OnlineExamination.Areas.Identity.Pages.Account
 {
-    [AllowAnonymous]
+    [Authorize(Roles = "Admin,Manager")]
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
