@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hossa\\source\\repos\\Online-Examination-System\\OnlineExamination\\OnlineExamination.csproj": {}
+    "D:\\ITI\\ASP\\Online-Examination-System\\OnlineExamination\\OnlineExamination.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hossa\\source\\repos\\Online-Examination-System\\OnlineExamination\\OnlineExamination.csproj": {
+    "D:\\ITI\\ASP\\Online-Examination-System\\OnlineExamination\\OnlineExamination.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hossa\\source\\repos\\Online-Examination-System\\OnlineExamination\\OnlineExamination.csproj",
+        "projectUniqueName": "D:\\ITI\\ASP\\Online-Examination-System\\OnlineExamination\\OnlineExamination.csproj",
         "projectName": "OnlineExamination",
-        "projectPath": "C:\\Users\\hossa\\source\\repos\\Online-Examination-System\\OnlineExamination\\OnlineExamination.csproj",
+        "projectPath": "D:\\ITI\\ASP\\Online-Examination-System\\OnlineExamination\\OnlineExamination.csproj",
         "packagesPath": "C:\\Users\\hossa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hossa\\source\\repos\\Online-Examination-System\\OnlineExamination\\obj\\",
+        "outputPath": "D:\\ITI\\ASP\\Online-Examination-System\\OnlineExamination\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hossa\\AppData\\Roaming\\NuGet\\NuGet.Config",
