@@ -512,7 +512,6 @@ C:\Users\hossa\source\repos\Online-Examination-System-main\OnlineExamination\bin
 C:\Users\hossa\source\repos\Online-Examination-System-main\OnlineExamination\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\hossa\source\repos\Online-Examination-System-main\OnlineExamination\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\hossa\source\repos\Online-Examination-System-main\OnlineExamination\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\hossa\source\repos\Online-Examination-System-main\OnlineExamination\obj\Debug\netcoreapp3.1\OnlineExamination.csprojAssemblyReference.cache
 C:\Users\hossa\source\repos\Online-Examination-System-main\OnlineExamination\obj\Debug\netcoreapp3.1\OnlineExamination.AssemblyInfoInputs.cache
 C:\Users\hossa\source\repos\Online-Examination-System-main\OnlineExamination\obj\Debug\netcoreapp3.1\OnlineExamination.AssemblyInfo.cs
 C:\Users\hossa\source\repos\Online-Examination-System-main\OnlineExamination\obj\Debug\netcoreapp3.1\OnlineExamination.csproj.CoreCompileInputs.cache
@@ -568,3 +567,5 @@ C:\Users\hossa\source\repos\Online-Examination-System-main\OnlineExamination\obj
 C:\Users\hossa\source\repos\Online-Examination-System-main\OnlineExamination\obj\Debug\netcoreapp3.1\OnlineExamination.dll
 C:\Users\hossa\source\repos\Online-Examination-System-main\OnlineExamination\obj\Debug\netcoreapp3.1\OnlineExamination.pdb
 C:\Users\hossa\source\repos\Online-Examination-System-main\OnlineExamination\obj\Debug\netcoreapp3.1\OnlineExamination.genruntimeconfig.cache
+C:\Users\hossa\source\repos\Online-Examination-System-main\OnlineExamination\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\EditManager.cshtml.g.cs
+C:\Users\hossa\source\repos\Online-Examination-System-main\OnlineExamination\obj\Debug\netcoreapp3.1\OnlineExamination.csprojAssemblyReference.cache

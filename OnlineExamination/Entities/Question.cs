@@ -15,5 +15,7 @@ namespace OnlineExamination.Entities
         public string Answer { get; set; }
         public bool Status { get; set; }
         public IList<ExamQuestion> ExamQuestions { get; set; }
+        public IList<StudentQuestions> StudentQuestions { get; set; }
+
     }
 }
