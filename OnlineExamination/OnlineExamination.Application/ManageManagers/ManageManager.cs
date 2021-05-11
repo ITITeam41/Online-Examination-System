@@ -44,7 +44,7 @@ namespace OnlineExamination.Application.ManageManagers
             {
                 Id = mngr.Id,
                 Email = mngr.Email,
-                Name = mngr.UserName,
+                NAMe = mngr.UserName,
                 PhoneNumber = mngr.PhoneNumber,
             };
             //return userManager.Users.SingleOrDefault(u => u.Id == ManagerID);
@@ -59,9 +59,10 @@ namespace OnlineExamination.Application.ManageManagers
                 .Select(u => new ManagerDTO
                 {
                     Id = u.Id,
-                    Name = u.UserName,
+                    NAMe = u.UserName,
                     Email = u.Email,
-                    PhoneNumber = u.PhoneNumber
+                    PhoneNumber = u.PhoneNumber,
+                    UserName = u.Name
                 }).ToList(),
                 ManagersCount = mngrs.Count
             };

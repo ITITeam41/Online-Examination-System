@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineExamination.Data;
 
 namespace OnlineExamination.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210511020738_ChangeAppName")]
+    partial class ChangeAppName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -245,15 +247,27 @@ namespace OnlineExamination.Data.Migrations
                     b.ToTable("Courses");
                 });
 
+            modelBuilder.Entity("OnlineExamination.Entities.CourseExam", b =>
+                {
+                    b.Property<int>("CourseId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ExamId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CourseId", "ExamId");
+
+                    b.HasIndex("ExamId");
+
+                    b.ToTable("CourseExams");
+                });
+
             modelBuilder.Entity("OnlineExamination.Entities.Exam", b =>
                 {
                     b.Property<int>("ExamId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CourseId")
-                        .HasColumnType("int");
 
                     b.Property<double>("Duration")
                         .HasColumnType("float");
@@ -274,8 +288,6 @@ namespace OnlineExamination.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ExamId");
-
-                    b.HasIndex("CourseId");
 
                     b.ToTable("Exams");
                 });
@@ -391,21 +403,6 @@ namespace OnlineExamination.Data.Migrations
                     b.ToTable("StudentExam");
                 });
 
-            modelBuilder.Entity("OnlineExamination.Entities.StudentQuestions", b =>
-                {
-                    b.Property<int>("StudentId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("QuestionId")
-                        .HasColumnType("int");
-
-                    b.HasKey("StudentId", "QuestionId");
-
-                    b.HasIndex("QuestionId");
-
-                    b.ToTable("StudentQuestions");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -457,11 +454,19 @@ namespace OnlineExamination.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("OnlineExamination.Entities.Exam", b =>
+            modelBuilder.Entity("OnlineExamination.Entities.CourseExam", b =>
                 {
-                    b.HasOne("OnlineExamination.Entities.Course", null)
-                        .WithMany("Exams")
-                        .HasForeignKey("CourseId");
+                    b.HasOne("OnlineExamination.Entities.Course", "Course")
+                        .WithMany("CourseExams")
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("OnlineExamination.Entities.Exam", "Exam")
+                        .WithMany("CourseExams")
+                        .HasForeignKey("ExamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("OnlineExamination.Entities.ExamQuestion", b =>
@@ -504,21 +509,6 @@ namespace OnlineExamination.Data.Migrations
 
                     b.HasOne("OnlineExamination.Entities.Student", "Student")
                         .WithMany("StudentExams")
-                        .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("OnlineExamination.Entities.StudentQuestions", b =>
-                {
-                    b.HasOne("OnlineExamination.Entities.Question", "Question")
-                        .WithMany("StudentQuestions")
-                        .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("OnlineExamination.Entities.Student", "Student")
-                        .WithMany("StudentQuestions")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

@@ -1,0 +1,24 @@
+﻿@page
+@model OnlineExamination.Pages.Admin.EditManagerModel
+@{
+}
+<form method="post">
+    <input type="hidden" asp-for="manager.Id" />
+    <div>
+        <label asp-for="manager.Email"></label>
+        <input asp-for="manager.Email" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="manager.Name"></label>
+        <input asp-for="manager.Name" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="manager.UserName"></label>
+        <input asp-for="manager.UserName" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="manager.PhoneNumber"></label>
+        <input asp-for="manager.PhoneNumber" class="form-control" />
+    </div>
+    <button type="submit" class="btn-primary">Save</button>
+</form>

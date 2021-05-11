@@ -51,8 +51,13 @@ namespace OnlineExamination.Areas.Identity.Pages.Account
         {
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 5)]
-            [Display(Name = "Name")]
+            [Display(Name = "User Name")]
             public string UserName { get; set; }
+
+            [Required]
+            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 5)]
+            [Display(Name = "Name")]
+            public string Name { get; set; }
 
             [Required]
             [DataType("PhoneNumber")]
@@ -113,8 +118,9 @@ namespace OnlineExamination.Areas.Identity.Pages.Account
                     Email = Input.Email,
                     UserRole = Input.UserRole, //////
                     PhoneNumber = Input.PhoneNumber,
+                    Name = Input.Name
                 };
-
+                
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

@@ -22,7 +22,6 @@ namespace OnlineExamination.Entities
         public string Password { get; set; }
         public string Email { get; set; }
         public int Phone { get; set; }
-        public DateTime DOB { get; set; }
         public List<Course> Courses { get; set; }
         public List<Question> Questions { get; set; }
         public List<Exam> Exams { get; set; }

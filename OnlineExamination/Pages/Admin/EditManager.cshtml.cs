@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
@@ -9,13 +10,13 @@ using OnlineExamination.Application.ManageManagers;
 
 namespace OnlineExamination.Pages.Admin
 {
-    public class DeleteManagerModel : PageModel
+    public class EditManagerModel : PageModel
     {
         private readonly RoleManager<IdentityRole> roleMAnager;
         private readonly UserManager<ApplicationUser> userManager;
 
         public IManageManager manageManager;
-        public DeleteManagerModel(IManageManager manageManager,
+        public EditManagerModel(IManageManager manageManager,
             RoleManager<IdentityRole> roleMAnager,
             UserManager<ApplicationUser> userManager)
         {
@@ -23,13 +24,13 @@ namespace OnlineExamination.Pages.Admin
             this.roleMAnager = roleMAnager;
             this.userManager = userManager;
         }
-        [BindProperty]
-        public ManagerDTO mngr { get; set; }
-        public void OnGet(string managerId)
-        {
-            mngr = manageManager.GetManager(managerId);
-        }
 
+        [BindProperty]
+        public ApplicationUser manager { get; set; }
+        public async Task OnGetAsync(string managerId)
+        {
+            manager = await userManager.FindByIdAsync(managerId);
+        }
         public async Task<IActionResult> OnPostAsync(string managerId)
         {
             var mg = await userManager.FindByIdAsync(managerId);
@@ -39,8 +40,12 @@ namespace OnlineExamination.Pages.Admin
             }
             else
             {
-                var Result = await userManager.DeleteAsync(mg);
-                if (Result.Succeeded)
+                mg.Email = manager.Email;
+                mg.Name = manager.Name;
+                mg.UserName = manager.UserName;
+                mg.PhoneNumber = manager.PhoneNumber;
+                var Edited = await userManager.UpdateAsync(mg);
+                if (Edited.Succeeded)
                 {
                     return RedirectToPage("./Managers");
                 }

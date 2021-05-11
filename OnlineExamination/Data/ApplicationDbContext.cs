@@ -17,23 +17,22 @@ namespace OnlineExamination.Data
         public DbSet<Exam> Exams { get; set; }
         public DbSet<Question> Questions { get; set; }
 
-        public DbSet<CourseExam> CourseExams { get; set; }
-
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<CourseExam>().HasKey(sc => new { sc.CourseId, sc.ExamId });
-            
-            builder.Entity<CourseExam>()
-                .HasOne<Course>(sc => sc.Course)
-                .WithMany(s => s.CourseExams)
-                .HasForeignKey(sc => sc.CourseId);
+            #region
+            //builder.Entity<CourseExam>().HasKey(sc => new { sc.CourseId, sc.ExamId });
 
-            builder.Entity<CourseExam>()
-                .HasOne<Exam>(sc => sc.Exam)
-                .WithMany(s => s.CourseExams)
-                .HasForeignKey(sc => sc.ExamId);
+            //builder.Entity<CourseExam>()
+            //    .HasOne<Course>(sc => sc.Course)
+            //    .WithMany(s => s.CourseExams)
+            //    .HasForeignKey(sc => sc.CourseId);
 
+            //builder.Entity<CourseExam>()
+            //    .HasOne<Exam>(sc => sc.Exam)
+            //    .WithMany(s => s.CourseExams)
+            //    .HasForeignKey(sc => sc.ExamId);
+            #endregion
             builder.Entity<ExamQuestion>().HasKey(sc => new { sc.ExamId, sc.QuestionId });
 
             builder.Entity<ExamQuestion>()
@@ -70,6 +69,20 @@ namespace OnlineExamination.Data
                 .HasOne<Course>(sc => sc.Course)
                 .WithMany(s => s.StudentCourses)
                  .HasForeignKey(sc => sc.CourseId);
+
+            base.OnModelCreating(builder);
+
+            builder.Entity<StudentQuestions>().HasKey(sc => new { sc.StudentId, sc.QuestionId });
+
+            builder.Entity<StudentQuestions>()
+                .HasOne<Student>(sc => sc.Student)
+                .WithMany(s => s.StudentQuestions)
+                .HasForeignKey(sc => sc.StudentId);
+
+            builder.Entity<StudentQuestions>()
+                .HasOne<Question>(sc => sc.Question)
+                .WithMany(s => s.StudentQuestions)
+                 .HasForeignKey(sc => sc.QuestionId);
 
             base.OnModelCreating(builder);
 
