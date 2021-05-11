@@ -37,6 +37,11 @@
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Admin/Managers">Doctors</a>
                             </li>
                         }
+                        @if (User.IsInRole("Manager"))
+                        {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/QuestionsBank/List">Questions Bank</a>
+                        </li>}
                     </ul>
                 </div>
             </div>

@@ -320,6 +320,9 @@ namespace OnlineExamination.Data.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
+                    b.Property<string>("question")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("QuestionId");
 
                     b.ToTable("Questions");

@@ -1,0 +1,115 @@
+﻿@page
+@model OnlineExamination.Pages.QuestionsBank.ListModel
+@{
+}
+
+<h1 class="text-center">Questions</h1>
+@if(Model.Questions.Count == 0)
+{
+    <p class="text-center font-weight-bold">No Questions are availabe !</p>
+}
+<p>
+    <a asp-page="/QuestionsBank/Edit" class="btn btn-primary">Create New</a>
+</p>
+
+<table class="table table-bordered" style="margin-bottom:10px;">  @*table-borderless*@
+    @foreach (var item in Model.Questions)
+    {
+        <thead>
+            <tr>
+                <th colspan="4">
+                    Q.@item.QuestionId - @Html.DisplayFor(modelItem => item.question) 
+                    <span style="display:inline-block;float: right">
+                         <a asp-page="/QuestionsBank/Edit" asp-route-questionId="@item.QuestionId">Edit</a> |
+                        <a asp-page="/QuestionsBank/Details" asp-route-questionId="@item.QuestionId">Details</a> |
+                        <a asp-page="/QuestionsBank/Delete" asp-route-questionId="@item.QuestionId">Delete</a>
+                    </span>
+                </th>
+                @*<td>
+                    <a asp-page="/QuestionsBank/Edit" asp-route-id="@item.QuestionId">Edit</a> |
+                    <a asp-page="/QuestionsBank/Details" asp-route-id="@item.QuestionId">Details</a> |
+                    <a asp-page="/QuestionsBank/Delete" asp-route-id="@item.QuestionId">Delete</a>
+                </td>*@
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="2">
+                    A - @Html.DisplayFor(modelItem => item.Option1)
+                </td>
+                <td colspan="2">
+                    B - @Html.DisplayFor(modelItem => item.Option2)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    C - @Html.DisplayFor(modelItem => item.Option3)
+                </td>
+                <td colspan="2">
+                    D - @Html.DisplayFor(modelItem => item.Option4)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <span style="font-weight:bold">Answer :</span>@Html.DisplayFor(modelItem => item.Option1)
+                </td>
+            </tr>
+        </tbody>
+    }
+</table>
+@*<table class="table table-borderless">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Questions[0].question)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Questions[0].Option1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Questions[0].Option2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Questions[0].Option3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Questions[0].Option4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Questions[0].Answer)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Questions)
+         {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.question)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Option1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Option2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Option3)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Option4)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Answer)
+                </td>
+                <td>
+                    <a asp-page="/QuestionsBank/Edit" asp-route-id="@item.QuestionId">Edit</a> |
+                    <a asp-page="/QuestionsBank/Details" asp-route-id="@item.QuestionId">Details</a> |
+                    <a asp-page="/QuestionsBank/Delete" asp-route-id="@item.QuestionId">Delete</a>
+                </td>
+            </tr>
+         }
+    </tbody>
+</table>*@
+

@@ -8,12 +8,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using OnlineExamination.Application.ManageManagers;
+using OnlineExamination.OnlineExam.Application.ManageManagers;
 using OnlineExamination.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using OnlineExamination.OnlineExam.Application.ManageQuestions;
 
 namespace OnlineExamination
 {
@@ -31,6 +32,7 @@ namespace OnlineExamination
         {
             services.AddHttpClient();
             services.AddTransient<IManageManager, ManageManager>();    //when deal with database
+            services.AddTransient<IManageQuestions, ManageQuestions>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
@@ -96,6 +98,7 @@ namespace OnlineExamination
             //initializing custom roles 
             var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var UserManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+
             string[] roleNames = { "Admin", "Manager", "User" };
             IdentityResult roleResult;
 
@@ -132,6 +135,33 @@ namespace OnlineExamination
 
                 }
             }
+
+            #region Create Manager
+            // find the user with the admin email 
+            var manager = await UserManager.FindByEmailAsync("manager@manager.com");
+
+            // check if the user exists
+            if (manager == null)
+            {
+                //Here you could create the super admin who will maintain the web app
+
+                var Manager = new ApplicationUser
+                {
+                    UserName = "manager@manager.com",
+                    Email = "manager@manager.com",
+                };
+                string ManagerPassword = "manager1";
+
+                var createManager = await UserManager.CreateAsync(Manager, ManagerPassword);
+
+                if (createManager.Succeeded)
+                {
+                    //here we tie the new user to the role
+                    await UserManager.AddToRoleAsync(Manager, "Manager");
+                }
+            }
+            #endregion
+
         }
     }
 }
