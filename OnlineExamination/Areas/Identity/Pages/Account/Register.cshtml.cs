@@ -14,6 +14,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using OnlineExamination;
+using OnlineExamination.Data;
+using OnlineExamination.Entities;
 
 namespace OnlineExamination.Areas.Identity.Pages.Account
 {
@@ -25,19 +27,24 @@ namespace OnlineExamination.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         RoleManager<IdentityRole> _roleManager; /////
+        private readonly ApplicationDbContext context; /////
+
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
-            RoleManager<IdentityRole> roleManager)
+            RoleManager<IdentityRole> roleManager,
+            ApplicationDbContext context
+            )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
             _roleManager = roleManager;
+            this.context = context;
         }
 
         [BindProperty]
@@ -124,6 +131,29 @@ namespace OnlineExamination.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
+                    if(user.UserRole=="User")
+                    {
+                        var student = new Student()
+                        {
+                            Name = user.Name,
+                            UserName = user.UserName,
+                            Email = user.Email
+                        };
+                        context.Add(student);
+                        context.SaveChanges();
+                    }
+                    if (user.UserRole == "Manager")
+                    {
+                        var doctor = new Doctor()
+                        {
+                            Name = user.Name,
+                            UserName = user.UserName,
+                            Email = user.Email
+                        };
+                        context.Add(doctor);
+                        context.SaveChanges();
+                    }
+
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

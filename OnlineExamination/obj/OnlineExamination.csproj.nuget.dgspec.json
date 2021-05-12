@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hossa\\source\\repos\\Online-Examination-System-main\\OnlineExamination\\OnlineExamination.csproj": {}
+    "F:\\Online-Examination-System\\OnlineExamination\\OnlineExamination.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hossa\\source\\repos\\Online-Examination-System-main\\OnlineExamination\\OnlineExamination.csproj": {
+    "F:\\Online-Examination-System\\OnlineExamination\\OnlineExamination.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hossa\\source\\repos\\Online-Examination-System-main\\OnlineExamination\\OnlineExamination.csproj",
+        "projectUniqueName": "F:\\Online-Examination-System\\OnlineExamination\\OnlineExamination.csproj",
         "projectName": "OnlineExamination",
-        "projectPath": "C:\\Users\\hossa\\source\\repos\\Online-Examination-System-main\\OnlineExamination\\OnlineExamination.csproj",
+        "projectPath": "F:\\Online-Examination-System\\OnlineExamination\\OnlineExamination.csproj",
         "packagesPath": "C:\\Users\\hossa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hossa\\source\\repos\\Online-Examination-System-main\\OnlineExamination\\obj\\",
+        "outputPath": "F:\\Online-Examination-System\\OnlineExamination\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hossa\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -85,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
