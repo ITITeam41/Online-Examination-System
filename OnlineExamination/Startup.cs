@@ -149,6 +149,7 @@ namespace OnlineExamination
                 {
                     UserName = "manager@manager.com",
                     Email = "manager@manager.com",
+                    UserRole = "Manager"
                 };
                 string ManagerPassword = "manager1";
 
@@ -158,6 +159,7 @@ namespace OnlineExamination
                 {
                     //here we tie the new user to the role
                     await UserManager.AddToRoleAsync(Manager, "Manager");
+
                 }
             }
             #endregion
