@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using OnlineExamination.Entities;
-using OnlineExamination.OnlineExam.Application.ManageQuestions;
+using OnlineExamination.Application.ManageQuestions;
 
 namespace OnlineExamination.Pages.QuestionsBank
 {

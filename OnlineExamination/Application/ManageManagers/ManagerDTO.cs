@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OnlineExamination.OnlineExam.Application.ManageManagers
+namespace OnlineExamination.Application.ManageManagers
 {
     public class ManagerDTO
     {

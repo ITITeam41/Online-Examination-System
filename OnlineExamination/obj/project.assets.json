@@ -8842,19 +8842,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\hossa\\.nuget\\packages\\": {}
+    "C:\\Users\\A7MED\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Online-Examination-System-main\\Online-Examination-System\\OnlineExamination\\OnlineExamination.csproj",
+      "projectUniqueName": "D:\\ITI\\ITI Study\\Web Development\\Examination System\\project\\Group\\Online-Examination-System\\OnlineExamination\\OnlineExamination.csproj",
       "projectName": "OnlineExamination",
-      "projectPath": "F:\\Online-Examination-System-main\\Online-Examination-System\\OnlineExamination\\OnlineExamination.csproj",
-      "packagesPath": "C:\\Users\\hossa\\.nuget\\packages\\",
-      "outputPath": "F:\\Online-Examination-System-main\\Online-Examination-System\\OnlineExamination\\obj\\",
+      "projectPath": "D:\\ITI\\ITI Study\\Web Development\\Examination System\\project\\Group\\Online-Examination-System\\OnlineExamination\\OnlineExamination.csproj",
+      "packagesPath": "C:\\Users\\A7MED\\.nuget\\packages\\",
+      "outputPath": "D:\\ITI\\ITI Study\\Web Development\\Examination System\\project\\Group\\Online-Examination-System\\OnlineExamination\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\hossa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\A7MED\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8866,7 +8866,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -8878,7 +8877,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
             "target": "Package",
@@ -8925,7 +8923,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

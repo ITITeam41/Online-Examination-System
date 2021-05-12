@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OnlineExamination.OnlineExam.Application.ManageManagers
+namespace OnlineExamination.Application.ManageManagers
 {
     public class ManageManager : IManageManager
     {

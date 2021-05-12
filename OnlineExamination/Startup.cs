@@ -8,13 +8,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using OnlineExamination.OnlineExam.Application.ManageManagers;
+using OnlineExamination.Application.ManageManagers;
+using OnlineExamination.Application.ManageQuestions;
 using OnlineExamination.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using OnlineExamination.OnlineExam.Application.ManageQuestions;
 
 namespace OnlineExamination
 {

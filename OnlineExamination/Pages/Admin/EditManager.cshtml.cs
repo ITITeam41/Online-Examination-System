@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using OnlineExamination.OnlineExam.Application.ManageManagers;
+using OnlineExamination.Application.ManageManagers;
 
 namespace OnlineExamination.Pages.Admin
 {

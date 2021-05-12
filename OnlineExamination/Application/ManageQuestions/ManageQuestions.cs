@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OnlineExamination.OnlineExam.Application.ManageQuestions
+namespace OnlineExamination.Application.ManageQuestions
 {
     public class ManageQuestions : IManageQuestions
     {
