@@ -1,0 +1,68 @@
+﻿@page
+@model OnlineExamination.Pages.Students.ListModel
+@{
+}
+
+<h1 class="text-center">Students</h1>
+@if (Model.Students.StudentsCount == 0)
+{
+    <p class="text-center font-weight-bold">No Students are availabe !</p>
+}
+<p>
+    <a asp-page="/Students/Edit" class="btn btn-primary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Students.Students[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Students.Students[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Students.Students[0].PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Students.Students[0].Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Students.Students[0].examMark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Students.Students[0].examStatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Students.Students)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.examMark)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.examStatus)
+                </td>
+                <td>
+                    <a asp-page="/Students/Edit" asp-route-studentId="@item.Id">Edit</a> |
+                    <a asp-page="/Students/Details" asp-route-studentId="@item.Id">Details</a> |
+                    <a asp-page="/Students/Delete" asp-route-studentId="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
