@@ -13,7 +13,6 @@ namespace OnlineExamination.Data
             : base(options)
         {
         }
-        public DbSet<Course> Courses { get; set; }
         public DbSet<Exam> Exams { get; set; }
         public DbSet<Question> Questions { get; set; }
 
@@ -58,19 +57,19 @@ namespace OnlineExamination.Data
                 .WithMany(s => s.StudentExams)
                  .HasForeignKey(sc => sc.ExamId);
 
-            builder.Entity<StudentCourse>().HasKey(sc => new { sc.StudentId, sc.CourseId });
+            #region
+            //builder.Entity<StudentCourse>().HasKey(sc => new { sc.StudentId, sc.CourseId });
 
-            builder.Entity<StudentCourse>()
-                .HasOne<Student>(sc => sc.Student)
-                .WithMany(s => s.StudentCourses)
-                .HasForeignKey(sc => sc.StudentId);
+            //builder.Entity<StudentCourse>()
+            //    .HasOne<Student>(sc => sc.Student)
+            //    .WithMany(s => s.StudentCourses)
+            //    .HasForeignKey(sc => sc.StudentId);
 
-            builder.Entity<StudentCourse>()
-                .HasOne<Course>(sc => sc.Course)
-                .WithMany(s => s.StudentCourses)
-                 .HasForeignKey(sc => sc.CourseId);
-
-            base.OnModelCreating(builder);
+            //builder.Entity<StudentCourse>()
+            //    .HasOne<Course>(sc => sc.Course)
+            //    .WithMany(s => s.StudentCourses)
+            //     .HasForeignKey(sc => sc.CourseId);
+            #endregion
 
             builder.Entity<StudentQuestions>().HasKey(sc => new { sc.StudentId, sc.QuestionId });
 
