@@ -9,7 +9,6 @@ namespace OnlineExamination.Entities
     {
         public Doctor()
         {
-            Courses = new List<Course>();
             Questions = new List<Question>();
             Exams = new List<Exam>();
 
@@ -22,7 +21,6 @@ namespace OnlineExamination.Entities
         public string Password { get; set; }
         public string Email { get; set; }
         public int Phone { get; set; }
-        public List<Course> Courses { get; set; }
         public List<Question> Questions { get; set; }
         public List<Exam> Exams { get; set; }
 

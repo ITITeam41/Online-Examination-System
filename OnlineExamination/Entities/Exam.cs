@@ -14,6 +14,7 @@ namespace OnlineExamination.Entities
         public int totalMark { get; set; }
         public double Duration { get; set; }
         public bool Status { get; set; }
+        public DateTime ExamStart { get; set; }
         public IList<ExamQuestion> ExamQuestions { get; set; }
         public IList<StudentExam> StudentExams { get; set; }
 

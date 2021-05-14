@@ -1,4 +1,6 @@
-﻿using OnlineExamination.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using OnlineExamination.Data;
+using OnlineExamination.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,17 +10,28 @@ namespace OnlineExamination.Application.ManageExam
 {
     public class ManageExam : IManageExam
     {
-        public void AddNewQuestion(Exam exam)
+        private readonly ApplicationDbContext context;
+        public ManageExam(ApplicationDbContext _context)
+        {
+            context = _context;
+        }
+        public void AddNewExam(Exam exam)
+        {
+            context.Exams.Add(exam);
+            context.SaveChanges();
+        }
+
+        public void deleteExam(int questionId)
         {
             throw new NotImplementedException();
         }
 
-        public void deleteQuestion(int questionId)
+        public void EditExam(Exam exam)
         {
             throw new NotImplementedException();
         }
 
-        public void EditQuestion(Exam exam)
+        public List<Exam> GetAllExams()
         {
             throw new NotImplementedException();
         }
@@ -28,12 +41,13 @@ namespace OnlineExamination.Application.ManageExam
             throw new NotImplementedException();
         }
 
-        public Exam GetQuestionById(int questionId)
+        public Exam GetExamById(int examId)
         {
-            throw new NotImplementedException();
+            var exam = context.Exams.Include(e=>e.ExamQuestions).SingleOrDefault(e => e.ExamId == examId);
+            return exam;
         }
 
-        public List<Exam> GetQuestionByName(string searchName)
+        public List<Exam> GetExamByName(string searchName)
         {
             throw new NotImplementedException();
         }

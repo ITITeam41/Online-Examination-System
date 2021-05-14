@@ -17,7 +17,6 @@ namespace OnlineExamination.Entities
         public int Phone { get; set; }
         public DateTime DOB { get; set; }
         public IList<StudentExam> StudentExams { get; set; }
-        public IList<StudentCourse> StudentCourses { get; set; }
         public IList<StudentQuestions> StudentQuestions { get; set; }
 
     }

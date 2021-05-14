@@ -1545,3 +1545,4 @@ F:\Online-Examination-System\Online-Examination-System\OnlineExamination\obj\Deb
 F:\Online-Examination-System\Online-Examination-System\OnlineExamination\obj\Debug\netcoreapp3.1\OnlineExamination.dll
 F:\Online-Examination-System\Online-Examination-System\OnlineExamination\obj\Debug\netcoreapp3.1\OnlineExamination.pdb
 F:\Online-Examination-System\Online-Examination-System\OnlineExamination\obj\Debug\netcoreapp3.1\OnlineExamination.genruntimeconfig.cache
+F:\Online-Examination-System\Online-Examination-System\OnlineExamination\obj\Debug\netcoreapp3.1\Razor\Pages\ExamCreation\CreateExam.cshtml.g.cs

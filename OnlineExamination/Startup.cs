@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OnlineExamination.Application.ManageExam;
 using OnlineExamination.Application.ManageManagers;
 using OnlineExamination.Application.ManageQuestions;
 using OnlineExamination.Application.ManageStudents;
@@ -35,6 +36,7 @@ namespace OnlineExamination
             services.AddTransient<IManageManager, ManageManager>();    //when deal with database
             services.AddTransient<IManageStudents, ManageStudents>();
             services.AddTransient<IManageQuestions, ManageQuestions>();
+            services.AddTransient<IManageExam, ManageExam>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
