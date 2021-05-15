@@ -14,6 +14,7 @@ namespace OnlineExamination.Data
         {
         }
         public DbSet<Exam> Exams { get; set; }
+        public DbSet<Student> Student { get; set; }
         public DbSet<Question> Questions { get; set; }
 
 
