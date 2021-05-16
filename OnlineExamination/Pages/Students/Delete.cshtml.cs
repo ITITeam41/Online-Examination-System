@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using OnlineExamination.Application.ManageStudents;
+using OnlineExamination.Entities;
 
 namespace OnlineExamination.Pages.Students
 {
@@ -22,7 +23,7 @@ namespace OnlineExamination.Pages.Students
             ManageStudent = _ManageStudent;
             userManager = _userManager;
         }
-        public IActionResult OnGet(string studentId)
+        public IActionResult OnGet(int studentId)
         {
             Student = ManageStudent.GetStudentById(studentId);
             if (Student == null)
@@ -34,9 +35,12 @@ namespace OnlineExamination.Pages.Students
                 return Page();
             }
         }
-        public async Task<IActionResult> OnPostAsync(string studentId)
+        public async Task<IActionResult> OnPostAsync(int studentId)
         {
-            var stud = await userManager.FindByIdAsync(studentId);
+            //Delete From Application User
+            var student = ManageStudent.GetStudentById(studentId);
+
+            var stud = await userManager.FindByEmailAsync(student.Email);
             if (stud == null)
             {
                 return BadRequest();
@@ -46,10 +50,11 @@ namespace OnlineExamination.Pages.Students
                 var Result = await userManager.DeleteAsync(stud);
                 if (Result.Succeeded)
                 {
+                    //Delete From Student table
+                    ManageStudent.DeleteStudent(studentId);
                     return RedirectToPage("List");
                 }
             }
-
             return RedirectToPage("List");
         }
     }

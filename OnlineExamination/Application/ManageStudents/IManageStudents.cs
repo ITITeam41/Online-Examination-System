@@ -9,9 +9,10 @@ namespace OnlineExamination.Application.ManageStudents
     public interface IManageStudents
     {
         StudentDTOList GetAllStudents();
-        StudentDTO GetStudentById(string studentId);
+        StudentDTO GetStudentById(int studentId);
         List<StudentDTO> GetStudentByName(string searchName);
         void EditStudent(StudentDTO student);
         void AddNewStudent(StudentDTO student);
+        void DeleteStudent(int studentId);
     }
 }
