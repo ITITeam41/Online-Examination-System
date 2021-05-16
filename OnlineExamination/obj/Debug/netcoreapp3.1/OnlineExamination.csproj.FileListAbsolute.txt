@@ -1549,3 +1549,5 @@ F:\Online-Examination-System\Online-Examination-System\OnlineExamination\obj\Deb
 D:\ITI\ITI Study\Web Development\Examination System\project\Group\Online-Examination-System\OnlineExamination\obj\Debug\netcoreapp3.1\Razor\Pages\ExamCreation\CreateExam.cshtml.g.cs
 D:\ITI\ITI Study\Web Development\Examination System\project\Group\Online-Examination-System\OnlineExamination\obj\Debug\netcoreapp3.1\Razor\Pages\Students\Edit.cshtml.g.cs
 D:\ITI\ITI Study\Web Development\Examination System\project\Group\Online-Examination-System\OnlineExamination\obj\Debug\netcoreapp3.1\Razor\Pages\Students\Details.cshtml.g.cs
+D:\ITI\ITI Study\Web Development\Examination System\project\Group\Online-Examination-System\OnlineExamination\obj\Debug\netcoreapp3.1\Razor\Pages\ExamCreation\ExamDegrees.cshtml.g.cs
+D:\ITI\ITI Study\Web Development\Examination System\project\Group\Online-Examination-System\OnlineExamination\obj\Debug\netcoreapp3.1\Razor\Pages\ExamCreation\StartExam.cshtml.g.cs
