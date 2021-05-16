@@ -3,5 +3,43 @@
 @{
 }
 <h2>
-   Start Exam
+    Start Exam
 </h2>
+<h4>Exam</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            @foreach (var item in Model.ExamQuestions)
+            { 
+                <div class="form-group">
+                    <h4>@item.question</h4>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="@item.QuestionId" value="@item.Option1"><span>@item.Option1</span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="@item.QuestionId" value="@item.Option2"><span>@item.Option2</span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="@item.QuestionId" value="@item.Option3"><span>@item.Option3</span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="@item.QuestionId" value="@item.Option4"><span>@item.Option4</span>
+                        </label>
+                    </div>
+                </div>
+             }
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-info" />
+                <a asp-page="/Index" class="btn btn-outline-info">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
