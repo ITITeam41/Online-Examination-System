@@ -14,5 +14,6 @@ namespace OnlineExamination.Application.ManageStudents
         void EditStudent(StudentDTO student);
         void AddNewStudent(StudentDTO student);
         void DeleteStudent(int studentId);
+        void AssignStudentScore(string userEmail, double Score);
     }
 }

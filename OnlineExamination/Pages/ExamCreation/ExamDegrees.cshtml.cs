@@ -9,8 +9,18 @@ namespace OnlineExamination.Pages.ExamCreation
 {
     public class ExamDegreesModel : PageModel
     {
-        public void OnGet()
+        public List<Result> StudentResults { get; set; }
+
+        public IActionResult OnGetAsync()
         {
+            StudentResults = new List<Result>();
+            return Page();
         }
+    }
+    public class Result
+    {
+        public int StudentScore { get; set; } = 5;
+        public DateTime ExamDate { get; set; } = DateTime.Now;
+        public string ExamName { get; set; } = "C#";
     }
 }

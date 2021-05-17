@@ -42,7 +42,6 @@ namespace OnlineExamination.Pages.ExamCreation
             exam.ExamQuestions = questions.Select((q => new ExamQuestion
             {
                 QuestionId = q.QuestionId,
-
             })).ToList();
             var students = context.Student.ToList();
             exam.StudentExams = students.Select(e => new StudentExam

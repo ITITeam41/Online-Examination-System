@@ -16,5 +16,6 @@ namespace OnlineExamination.Application.ManageExam
         void EditExam(Exam exam);
         void deleteExam(int examId);
         void AddNewExam(Exam exam);
+        double GetMarkForEachQuestion(int examId);
     }
 }

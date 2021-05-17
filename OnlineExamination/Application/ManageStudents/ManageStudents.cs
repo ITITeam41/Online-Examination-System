@@ -84,5 +84,11 @@ namespace OnlineExamination.Application.ManageStudents
         {
             throw new NotImplementedException();
         }
+        public void AssignStudentScore(string userEmail, double Score)
+        {
+            var student = context.Student.Where(std => std.UserName == userEmail).FirstOrDefault();
+            student.examMark = Score;
+            context.SaveChanges();
+        }
     }
 }
