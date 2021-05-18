@@ -25,7 +25,8 @@ namespace OnlineExamination.Application.ManageStudents
                 Gender = student.Gender,
                 Phone = student.PhoneNumber,
                 examMark = student.examMark,
-                examStatus = student.examStatus
+                examStatus = student.examStatus,
+                ImagePath = student.ImagePath
             };
             context.Student.Add(stud);
             context.SaveChanges();
@@ -49,6 +50,7 @@ namespace OnlineExamination.Application.ManageStudents
                 stud.Gender = student.Gender;
                 stud.examMark = student.examMark;
                 stud.examStatus = student.examStatus;
+                stud.ImagePath = student.ImagePath;
 
                 context.SaveChanges();
             }
@@ -68,7 +70,8 @@ namespace OnlineExamination.Application.ManageStudents
                     Gender = std.Gender,
                     PhoneNumber = std.Phone,
                     examMark = std.examMark,
-                    examStatus = std.examStatus
+                    examStatus = std.examStatus,
+                    ImagePath = std.ImagePath
                 }).ToList(),
                 StudentsCount = studs.Count
             };

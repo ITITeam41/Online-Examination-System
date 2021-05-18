@@ -14,6 +14,7 @@ namespace OnlineExamination.Application.ManageStudents
         public string Gender { get; set; }
         public double examMark { get; set; } = 15.5; // Set default value for test
         public string examStatus { get; set; } = "Passed"; // Set default value for test
+        public string ImagePath { get; set; }
     }
     public class StudentDTOList
     {
