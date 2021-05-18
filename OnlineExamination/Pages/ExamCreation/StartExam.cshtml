@@ -7,51 +7,68 @@
 </h2>
 <hr />
 
-<div class="row">
-    <div class="col-md-4">
-        @{ int i = 0;}
-        @{ int QuestionNumber = 1;}
-        <form method="post">
+@if (Model.Questions.Count < 1)
+{
+    <br />
+    <h3 class="text-center">
+        No Exams Right Now !
+    </h3>
+    <hr />
+}
+else
+{
+    <div class="row">
+        <div class="col-md-4">
+            @{ int i = 0;}
+            @{ int QuestionNumber = 1;}
+            <form method="post" id="examForm">
 
-            <input type="text" hidden asp-for="userEmail" class="form-check-input" value="@Model.userEmail">
-
-            @foreach (var item in Model.Questions)
-            {
-                <input type="hidden" asp-for="@item.QuestionId" />
+                <input type="text" hidden asp-for="userEmail" class="form-check-input" value="@Model.userEmail">
+                @foreach (var item in Model.Questions)
+                {
+                    <input type="hidden" asp-for="@item.QuestionId" />
+                    <div class="form-group">
+                        <h4>@(QuestionNumber++) - @item.question</h4>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" checked asp-for="QuestionsAnswer[i]" class="form-check-input" value="@item.Option1"><span>@item.Option1</span>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" asp-for="QuestionsAnswer[i]" class="form-check-input" value="@item.Option2"><span>@item.Option2</span>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" asp-for="QuestionsAnswer[i]" class="form-check-input" value="@item.Option3"><span>@item.Option3</span>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" asp-for="QuestionsAnswer[i]" class="form-check-input" value="@item.Option4"><span>@item.Option4</span>
+                            </label>
+                        </div>
+                        <div class="form-check" hidden>
+                            <label class="form-check-label">
+                                <input type="text" asp-for="Questions[i].Answer" class="form-check-input" value="@item.Answer">
+                            </label>
+                        </div>
+                    </div>
+                    <span style="display:none">@(i++)</span>
+                }
                 <div class="form-group">
-                    <h4>@(QuestionNumber++) - @item.question</h4>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="radio" checked asp-for="QuestionsAnswer[i]" class="form-check-input" value="@item.Option1"><span>@item.Option1</span>
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="radio" asp-for="QuestionsAnswer[i]" class="form-check-input" value="@item.Option2"><span>@item.Option2</span>
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="radio" asp-for="QuestionsAnswer[i]" class="form-check-input" value="@item.Option3"><span>@item.Option3</span>
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="radio" asp-for="QuestionsAnswer[i]" class="form-check-input" value="@item.Option4"><span>@item.Option4</span>
-                        </label>
-                    </div>
-                    <div class="form-check" hidden>
-                        <label class="form-check-label">
-                            <input type="text" asp-for="Questions[i].Answer" class="form-check-input" value="@item.Answer">
-                        </label>
-                    </div>
+                    <input type="submit" value="Save" class="btn btn-info" />
+                    <a asp-page="/Index" class="btn btn-outline-info">Back to List</a>
                 </div>
-                <span style="display:none">@(i++)</span>
-            }
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-info" />
-                <a asp-page="/Index" class="btn btn-outline-info">Back to List</a>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
+
+    <script>
+        function AutoSubmit() {
+            document.forms["examForm"].submit();
+        }
+        setTimeout(AutoSubmit, 60000); // Will Submit after 1 Minute
+    </script>
+}

@@ -8,16 +8,17 @@
 <hr />
 
 <h2>Your Score is : @Model.studentDegree from @Model.examMark</h2>
+<br />
 @if (Model.studentDegree >= Model.passMark)
 {
-    <h2>You have passed the Exam</h2>
+    <h2 class="bg-success" style="padding:25px">You have Passed the Exam</h2>
 }
 @if (Model.studentDegree < Model.passMark)
 {
-    <h2>You have failled the Exam</h2>
+    <h2 class="bg-danger" style="padding:25px">You have Failed the Exam</h2>
 }
 
-@if (Model.StudentResults.Count < 1)
+@*@if (Model.StudentResults.Count < 1)
 {
     <br />
     <h4 class="text-center">You have not completed any Exam !</h4>
@@ -72,4 +73,4 @@
             }
         </table>
     </div>
-</form>
+</form>*@

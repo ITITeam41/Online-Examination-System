@@ -34,7 +34,11 @@ namespace OnlineExamination.Application.ManageExam
         public List<ExamQuestion> GetAllExamQuestions()
         {
             var c = DateTime.Now;
-            var examQuestions = context.Exams
+            List<ExamQuestion> examQuestions = null;
+
+            try
+            {
+                examQuestions = context.Exams
                 .Include(e => e.ExamQuestions)
                 .Where(x => x.ExamStart.Year == c.Year &&
                 x.ExamStart.Month == c.Month && x.ExamStart.Day == c.Day
@@ -42,6 +46,11 @@ namespace OnlineExamination.Application.ManageExam
                 && c.Minute - x.ExamStart.Minute <= x.Duration
                 && c.Minute - x.ExamStart.Minute >= 0)
                 .Select(q => q.ExamQuestions).SingleOrDefault().ToList();
+            }
+            catch (Exception)
+            {
+                examQuestions = new List<ExamQuestion>();
+            }
             return examQuestions;
         }
 
