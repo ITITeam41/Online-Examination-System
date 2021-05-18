@@ -22,8 +22,11 @@ else
             @{ int i = 0;}
             @{ int QuestionNumber = 1;}
             <form method="post" id="examForm">
-
+                @*@Model.RemainingTime*@
                 <input type="text" hidden asp-for="userEmail" class="form-check-input" value="@Model.userEmail">
+                <input type="text" hidden asp-for="exam.ExamId">
+                <input type="text" hidden asp-for="exam.totalMark">
+                <input type="text" hidden asp-for="exam.passMark">
                 @foreach (var item in Model.Questions)
                 {
                     <input type="hidden" asp-for="@item.QuestionId" />
@@ -69,6 +72,8 @@ else
         function AutoSubmit() {
             document.forms["examForm"].submit();
         }
-        setTimeout(AutoSubmit, 60000); // Will Submit after 1 Minute
+        var time = (@Model.RemainingTime) * 60000;
+        //console.log(time);
+        setTimeout(AutoSubmit, time);
     </script>
 }

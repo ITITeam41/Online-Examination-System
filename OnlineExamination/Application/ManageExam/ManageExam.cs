@@ -63,6 +63,18 @@ namespace OnlineExamination.Application.ManageExam
         {
             throw new NotImplementedException();
         }
+
+        public Exam GetCurrentExam()
+        {
+            var c = DateTime.Now;
+            var exam = context.Exams.Where(x => x.ExamStart.Year == c.Year &&
+                x.ExamStart.Month == c.Month && x.ExamStart.Day == c.Day
+                && x.ExamStart.Hour == c.Hour
+                && c.Minute - x.ExamStart.Minute <= x.Duration
+                && c.Minute - x.ExamStart.Minute >= 0).SingleOrDefault();
+            return exam;
+        }
+
         public Exam GetExamById(int examId)
         {
             var exam = context.Exams.Include(e=>e.ExamQuestions).SingleOrDefault(e => e.ExamId == examId);

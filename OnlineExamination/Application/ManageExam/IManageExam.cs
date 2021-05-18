@@ -17,5 +17,6 @@ namespace OnlineExamination.Application.ManageExam
         void deleteExam(int examId);
         void AddNewExam(Exam exam);
         double GetMarkForEachQuestion(int examId);
+        Exam GetCurrentExam();
     }
 }
