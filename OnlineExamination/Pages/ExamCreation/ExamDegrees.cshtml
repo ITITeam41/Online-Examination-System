@@ -7,7 +7,15 @@
 <h2>My Results</h2>
 <hr />
 
-<h2>Your Score is : @Model.studentDegree</h2>
+<h2>Your Score is : @Model.studentDegree from @Model.examMark</h2>
+@if (Model.studentDegree >= Model.examMark)
+{
+    <h2>You have passed the Exam</h2>
+}
+@if (Model.studentDegree < Model.examMark)
+{
+    <h2>You have failled the Exam</h2>
+}
 
 @if (Model.StudentResults.Count < 1)
 {
@@ -27,10 +35,10 @@
                     ExamName
                 </th>
                 <th>
-                    Exam Date 
+                    Exam Date
                 </th>
                 <th>
-                   StudentScore
+                    StudentScore
                 </th>
                 <th></th>
             </tr>

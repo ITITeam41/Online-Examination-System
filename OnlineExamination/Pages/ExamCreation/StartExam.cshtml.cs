@@ -73,7 +73,8 @@ namespace OnlineExamination.Pages.ExamCreation
 
             manageStudents.AssignStudentScore(userEmail, Score);
 
-            return RedirectToPage("./ExamDegrees",new {result = Score });
+            return RedirectToPage("./ExamDegrees",new {result = Score , ExamMark = exam.totalMark,
+            PassMark= exam.passMark});
         }
     }
 }
