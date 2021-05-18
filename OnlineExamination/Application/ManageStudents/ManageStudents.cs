@@ -86,7 +86,7 @@ namespace OnlineExamination.Application.ManageStudents
         }
         public void AssignStudentScore(string userEmail, double Score)
         {
-            var student = context.Student.Where(std => std.UserName == userEmail).FirstOrDefault();
+            var student = context.Student.Where(std => std.Email == userEmail).FirstOrDefault();
             student.examMark = Score;
             context.SaveChanges();
         }

@@ -54,7 +54,13 @@ namespace OnlineExamination.Pages.ExamCreation
         public IActionResult OnPost(int examId)
         {
             //var mark = 5;
-            var mark = manageExam.GetMarkForEachQuestion(4);
+            var c = DateTime.Now;
+            var exam = context.Exams.Where(x => x.ExamStart.Year == c.Year &&
+                x.ExamStart.Month == c.Month && x.ExamStart.Day == c.Day
+                && x.ExamStart.Hour == c.Hour
+                && c.Minute - x.ExamStart.Minute <= x.Duration
+                && c.Minute - x.ExamStart.Minute >= 0).SingleOrDefault();
+            var mark = manageExam.GetMarkForEachQuestion(exam.ExamId);
 
             var Score = 0.0;
             for (int i = 0; i < Questions.Count; i++)
@@ -67,7 +73,7 @@ namespace OnlineExamination.Pages.ExamCreation
 
             manageStudents.AssignStudentScore(userEmail, Score);
 
-            return RedirectToPage("./ExamDegrees");
+            return RedirectToPage("./ExamDegrees",new {result = Score });
         }
     }
 }
