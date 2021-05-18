@@ -1,0 +1,65 @@
+﻿@page
+@model OnlineExamination.Pages.ExamCreation.ExamDegreesModel
+@{
+}
+
+<br />
+<h2>My Results</h2>
+<hr />
+
+@if (Model.StudentResults.Count < 1)
+{
+    <br />
+    <h4 class="text-center">You have not completed any Exam !</h4>
+}
+
+<br />
+<form method="post">
+    <div class="form-border-main">
+        <table class="table">
+            <tr>
+                <th>
+                    No.
+                </th>
+                <th>
+                    ExamName
+                </th>
+                <th>
+                    Exam Date 
+                </th>
+                <th>
+                   StudentScore
+                </th>
+                <th></th>
+            </tr>
+
+            @{ int i = 1;}
+            @foreach (var item in Model.StudentResults)
+            {
+                <tr>
+                    <td>
+                        @(i++)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.ExamName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.ExamDate)
+                    </td>
+                    @if (item.StudentScore >= 40)
+                    {
+                        <td style="color:green">
+                            @Html.DisplayFor(m => item.StudentScore)%
+                        </td>
+                    }
+                    else
+                    {
+                        <td style="color:red">
+                            @Html.DisplayFor(m => item.StudentScore)%
+                        </td>
+                    }
+                </tr>
+            }
+        </table>
+    </div>
+</form>

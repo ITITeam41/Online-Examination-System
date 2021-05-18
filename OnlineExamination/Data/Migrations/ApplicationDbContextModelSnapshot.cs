@@ -333,10 +333,16 @@ namespace OnlineExamination.Data.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Phone")
-                        .HasColumnType("int");
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("examMark")
+                        .HasColumnType("float");
+
+                    b.Property<string>("examStatus")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("StudentId");

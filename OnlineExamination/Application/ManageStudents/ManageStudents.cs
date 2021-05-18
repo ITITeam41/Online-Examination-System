@@ -10,55 +10,85 @@ namespace OnlineExamination.Application.ManageStudents
 {
     public class ManageStudents : IManageStudents
     {
-        private readonly RoleManager<IdentityRole> roleMAnager;
-        private readonly UserManager<ApplicationUser> userManager;
-        public ManageStudents(RoleManager<IdentityRole> _roleMAnager, UserManager<ApplicationUser> _userManager)
+        private readonly ApplicationDbContext context;
+        public ManageStudents(ApplicationDbContext _context)
         {
-            userManager = _userManager;
-            roleMAnager = _roleMAnager;
+            context = _context;
         }
         public void AddNewStudent(StudentDTO student)
         {
-            throw new NotImplementedException();
+            var stud = new Student()
+            {
+                StudentId = student.Id,
+                Name = student.Name,
+                Email = student.Email,
+                Gender = student.Gender,
+                Phone = student.PhoneNumber,
+                examMark = student.examMark,
+                examStatus = student.examStatus
+            };
+            context.Student.Add(stud);
+            context.SaveChanges();
+        }
+
+        public void DeleteStudent(int studentId)
+        {
+            var stud = context.Student.SingleOrDefault(std => std.StudentId == studentId);
+            context.Student.Remove(stud);
+            context.SaveChanges();
         }
 
         public void EditStudent(StudentDTO student)
         {
-            throw new NotImplementedException();
+            var stud = context.Student.SingleOrDefault(std => std.StudentId == student.Id);
+            if (stud != null)
+            {
+                stud.Name = student.Name;
+                stud.Phone = student.PhoneNumber;
+                stud.Email = student.Email;
+                stud.Gender = student.Gender;
+                stud.examMark = student.examMark;
+                stud.examStatus = student.examStatus;
+
+                context.SaveChanges();
+            }
         }
 
         public StudentDTOList GetAllStudents()
         {
-            var studs = userManager.Users.ToList();
+            var studs = context.Student.ToList();
+
             return new StudentDTOList()
             {
-                Students = studs.Where(r => r.UserRole == "User")
-                .Select(std => new StudentDTO
+                Students = studs.Select(std => new StudentDTO
                 {
-                    Id = std.Id,
+                    Id = std.StudentId,
                     Email = std.Email,
-                    Name = std.UserName,
-                    PhoneNumber = std.PhoneNumber,
+                    Name = std.Name,
+                    Gender = std.Gender,
+                    PhoneNumber = std.Phone,
+                    examMark = std.examMark,
+                    examStatus = std.examStatus
                 }).ToList(),
                 StudentsCount = studs.Count
             };
         }
 
-        public StudentDTO GetStudentById(string studentId)
+        public StudentDTO GetStudentById(int studentId)
         {
-            var stud = userManager.Users.SingleOrDefault(std => std.Id == studentId);
-            return new StudentDTO()
-            {
-                Id = stud.Id,
-                Email = stud.Email,
-                Name = stud.UserName,
-                PhoneNumber = stud.PhoneNumber,
-            };
+            var stud = GetAllStudents().Students.SingleOrDefault(std => std.Id == studentId);
+            return stud;
         }
 
         public List<StudentDTO> GetStudentByName(string searchName)
         {
             throw new NotImplementedException();
+        }
+        public void AssignStudentScore(string userEmail, double Score)
+        {
+            var student = context.Student.Where(std => std.UserName == userEmail).FirstOrDefault();
+            student.examMark = Score;
+            context.SaveChanges();
         }
     }
 }
