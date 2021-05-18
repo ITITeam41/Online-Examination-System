@@ -11,8 +11,15 @@ namespace OnlineExamination.Pages.ExamCreation
     {
         public List<Result> StudentResults { get; set; }
 
-        public IActionResult OnGetAsync()
+        public double studentDegree { get; set; }
+        public double examMark { get; set; }
+        public double passMark { get; set; }
+
+        public IActionResult OnGetAsync(double result , double ExamMark,double PassMark)
         {
+            passMark = PassMark;
+            examMark = ExamMark;
+            studentDegree = result;
             StudentResults = new List<Result>();
             return Page();
         }

@@ -15,15 +15,7 @@ namespace OnlineExamination.Application.ManageExam
         {
             context = _context;
         }
-        // Just for Test
-        //List<Question> questions = new List<Question>()
-        //{
-        //    new Question(){QuestionId = 1,question = "1- Bootsrap is : ", Option1 = "library", Option2 = "framework", Option3 ="Programming Lanaguge", Option4 = "All", Answer = "framework"},
-        //    new Question(){QuestionId = 2,question = "2- Bootsrap is : ", Option1 = "library", Option2 = "framework", Option3 ="Programming Lanaguge", Option4 = "All", Answer = "framework"},
-        //    new Question(){QuestionId = 3,question = "3- Bootsrap is : ", Option1 = "library", Option2 = "framework", Option3 ="Programming Lanaguge", Option4 = "All", Answer = "framework"},
-        //    new Question(){QuestionId = 4,question = "4- Bootsrap is : ", Option1 = "library", Option2 = "framework", Option3 ="Programming Lanaguge", Option4 = "All", Answer = "framework"},
-        //    new Question(){QuestionId = 5,question = "5- Bootsrap is : ", Option1 = "library", Option2 = "framework", Option3 ="Programming Lanaguge", Option4 = "All", Answer = "framework"},
-        //};
+
         public void AddNewExam(Exam exam)
         {
             context.Exams.Add(exam);
