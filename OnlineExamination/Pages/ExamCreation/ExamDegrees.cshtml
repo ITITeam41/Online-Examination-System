@@ -8,11 +8,11 @@
 <hr />
 
 <h2>Your Score is : @Model.studentDegree from @Model.examMark</h2>
-@if (Model.studentDegree >= Model.examMark)
+@if (Model.studentDegree >= Model.passMark)
 {
     <h2>You have passed the Exam</h2>
 }
-@if (Model.studentDegree < Model.examMark)
+@if (Model.studentDegree < Model.passMark)
 {
     <h2>You have failled the Exam</h2>
 }
