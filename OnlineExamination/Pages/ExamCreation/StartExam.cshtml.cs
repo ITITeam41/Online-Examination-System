@@ -28,7 +28,9 @@ namespace OnlineExamination.Pages.ExamCreation
         public List<ExamQuestion> examQuestions { get; set; }
         [BindProperty]
         public List<Question> Questions { get; set; }
-
+        [BindProperty]
+        public Exam exam { get; set; }
+        public double? RemainingTime { get; set; }
         public StartExamModel(IManageExam _manageExam,ApplicationDbContext context, 
             IManageQuestions manageQuestions, IManageStudents _manageStudents,
             UserManager<ApplicationUser> _userManager)
@@ -41,7 +43,6 @@ namespace OnlineExamination.Pages.ExamCreation
         }
         public async Task OnGetAsync()
         {
-
             examQuestions = manageExam.GetAllExamQuestions().ToList();
             Questions = examQuestions.Select(q => manageQuestions.GetQuestionById(q.QuestionId))
                 .ToList();
@@ -50,16 +51,11 @@ namespace OnlineExamination.Pages.ExamCreation
             ApplicationUser applicationUser = await userManager.GetUserAsync(User);
             userEmail = applicationUser?.Email; // will give the user's Email
 
+            exam = manageExam.GetCurrentExam();
+            RemainingTime = GetRemainingExamMinutes();
         }
-        public IActionResult OnPost(int examId)
+        public IActionResult OnPost()
         {
-            //var mark = 5;
-            var c = DateTime.Now;
-            var exam = context.Exams.Where(x => x.ExamStart.Year == c.Year &&
-                x.ExamStart.Month == c.Month && x.ExamStart.Day == c.Day
-                && x.ExamStart.Hour == c.Hour
-                && c.Minute - x.ExamStart.Minute <= x.Duration
-                && c.Minute - x.ExamStart.Minute >= 0).SingleOrDefault();
             var mark = manageExam.GetMarkForEachQuestion(exam.ExamId);
 
             var Score = 0.0;
@@ -75,6 +71,23 @@ namespace OnlineExamination.Pages.ExamCreation
 
             return RedirectToPage("./ExamDegrees",new {result = Score , ExamMark = exam.totalMark,
             PassMark= exam.passMark});
+        }
+        public double? GetRemainingExamMinutes()
+        {
+            var timeNow = DateTime.Now;
+            TimeSpan interval = default(TimeSpan);
+            double? RemainingTimeInMinutes = null;
+            try
+            {
+                interval = timeNow - exam.ExamStart;
+                var totalMinutes = Math.Round( interval.TotalMinutes,0);
+                RemainingTimeInMinutes = exam.Duration - totalMinutes;
+            }
+            catch (Exception)
+            {
+
+            }
+            return RemainingTimeInMinutes;
         }
     }
 }
